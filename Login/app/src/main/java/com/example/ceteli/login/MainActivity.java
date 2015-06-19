@@ -33,9 +33,11 @@ public class MainActivity extends ActionBarActivity {
                 if (strLogin.equals(usercerto) && strSenha.equals(senhacerta) ){
                     Toast.makeText(MainActivity.this, "Bem-vindo!", Toast.LENGTH_SHORT).show();
                     login.setText("");
+                    senha.setText("");
                 }
                 else{
                     Toast.makeText(MainActivity.this, "login invalido", Toast.LENGTH_SHORT).show();
+                    login.setText("");
                     senha.setText("");
                 }
             }
