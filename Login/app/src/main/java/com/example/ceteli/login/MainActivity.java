@@ -4,9 +4,11 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
-EditText EdtTxtUser;
-EditText EdtTxtPassword;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -14,6 +16,30 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //chamando os objstos
+       final EditText login = (EditText) findViewById(R.id.EdtTxtUser);
+        final EditText senha = (EditText) findViewById(R.id.EdtTxtPassword);
+        final Button entrar = (Button) findViewById(R.id.btConfirmar);
+
+        entrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String usercerto = "dgavieira";
+                String senhacerta = "1234";
+                String strLogin = login.getText().toString();
+                String strSenha = senha.getText().toString();
+
+                if (strLogin.equals(usercerto) && strSenha.equals(senhacerta) ){
+                    Toast.makeText(MainActivity.this, "Bem-vindo!", Toast.LENGTH_SHORT).show();
+                    login.setText("");
+                }
+                else{
+                    Toast.makeText(MainActivity.this, "login invalido", Toast.LENGTH_SHORT).show();
+                    senha.setText("");
+                }
+            }
+        });
     }
 
     @Override
