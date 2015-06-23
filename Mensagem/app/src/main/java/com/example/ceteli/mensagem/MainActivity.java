@@ -7,14 +7,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 
 public class MainActivity extends ActionBarActivity {
-
+    EditText edtNome;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        edtNome = (EditText) findViewById(R.id.edtNome);
         Button btn = (Button) findViewById(R.id.btnCadastro);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -25,6 +27,7 @@ public class MainActivity extends ActionBarActivity {
     }
     public void mostrarMensagem(){
         Intent intent = new Intent(this, MensagemActivity.class);
+        intent.putExtra("nome", edtNome.getText().toString());
         startActivity(intent);
     }
     @Override

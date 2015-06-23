@@ -1,5 +1,6 @@
 package com.example.ceteli.mensagem;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,9 +14,13 @@ public class MensagemActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mensagem);
+        Intent intent = getIntent();
+        String nome = intent.getStringExtra("nome");
         TextView tv = new TextView (this);
-        tv.setText("Dados inseridos com sucesso!");
+        tv.setText("Ola, " +nome);
         setContentView(tv);
+
+
     }
 
     @Override
