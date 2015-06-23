@@ -1,15 +1,13 @@
-package com.example.ceteli.login2;
+package com.example.ceteli.mensagem;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
-import java.util.ArrayList;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -17,28 +15,18 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //chamando os objetos
-        final EditText nome = (EditText) findViewById(R.id.edtTxtName);
-        final EditText fone = (EditText) findViewById(R.id.edtTxtPhone);
-        final EditText mail = (EditText) findViewById(R.id.edtTxtMail);
-        final EditText salario = (EditText) findViewById(R.id.edtTxtSalario);
-        final Button confirma = (Button) findViewById(R.id.btSend);
-
-        confirma.setOnClickListener(new View.OnClickListener() {
+        Button btn = (Button) findViewById(R.id.btnCadastro);
+        btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                String mensagem = " ";
-                mensagem+= nome.getText().toString() + " \n";
-                mensagem+= fone.getText().toString() + " \n";
-                mensagem+= mail.getText().toString() + " \n";
-                mensagem+= salario.getText().toString() + " \n";
-                Toast.makeText(MainActivity.this, mensagem, Toast.LENGTH_SHORT).show();
-
+            public void onClick(View v) {
+                mostrarMensagem();
             }
         });
-
     }
-
+    public void mostrarMensagem(){
+        Intent intent = new Intent(this, MensagemActivity.class);
+        startActivity(intent);
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
