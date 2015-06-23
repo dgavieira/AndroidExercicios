@@ -12,6 +12,7 @@ import android.widget.EditText;
 
 public class MainActivity extends ActionBarActivity {
     EditText edtNome;
+    EditText edtRegiao;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +25,7 @@ public class MainActivity extends ActionBarActivity {
                 mostrarMensagem();
             }
         });
+        EditText edtRegiao = (EditText)
     }
     public void mostrarMensagem(){
         Intent intent = new Intent(this, MensagemActivity.class);
