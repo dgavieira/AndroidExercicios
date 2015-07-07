@@ -23,10 +23,16 @@
         android:layout_height="wrap_content"
         android:id="@+id/edtRegiao" />
 
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spRegiao"
+        android:layout_gravity="center_horizontal" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
+        android:text="New Button"89
         android:id="@+id/btnCadastro"
         android:layout_gravity="center_horizontal" />
 </LinearLayout>

@@ -19,8 +19,6 @@ public class MensagemActivity extends ActionBarActivity {
         TextView tv = new TextView (this);
         tv.setText("Ola, " +nome);
         setContentView(tv);
-
-
     }
 
     @Override

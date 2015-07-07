@@ -1,8 +1,7 @@
-package com.example.ceteli.mensagem;
+package com.example.ceteli.exercicio2;
 
-import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,40 +11,31 @@ import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity {
-    EditText edtNome;
-    EditText edtRegiao;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        edtNome = (EditText) findViewById(R.id.edtNome);
-        Button btn = (Button) findViewById(R.id.btnCadastro);
-        btn.setOnClickListener(new View.OnClickListener() {
+        //chamando os objetos
+        final EditText nome = (EditText) findViewById(R.id.edtTxtName);
+        final EditText fone = (EditText) findViewById(R.id.edtTxtPhone);
+        final EditText mail = (EditText) findViewById(R.id.edtTxtMail);
+        final EditText salario = (EditText) findViewById(R.id.edtTxtSalario);
+        final Button confirma = (Button) findViewById(R.id.btSend);
+
+        confirma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mostrarMensagem();
-            }
-        });
-        EditText edtRegiao = (EditText) findViewById(R.id.edtRegiao);
-        edtRegiao.setOnClickListener(new View.OnClickListener(){
-
-            public void onClick(View v){
-                usarToast("clique");
-            }
-        });
-        edtRegiao.setOnClickListener(new View.OnClickListener(){
-
-            public boolean onLongClick(View v){
-                usarToast(" Long CLique");
-                return false;
+                String mensagem = " ";
+                mensagem+= nome.getText().toString() + " \n";
+                mensagem+= fone.getText().toString() + " \n";
+                mensagem+= mail.getText().toString() + " \n";
+                mensagem+= salario.getText().toString() + " \n";
+                Toast.makeText(MainActivity.this, mensagem, Toast.LENGTH_SHORT).show();
             }
         });
     }
-    public void mostrarMensagem(){
-        Intent intent = new Intent(this, MensagemActivity.class);
-        intent.putExtra("nome", edtNome.getText().toString());
-        startActivity(intent);
-    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -66,8 +56,5 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-    public void usarToast(String msg){
-        Toast.makeText(this, msg, 1000).show();
     }
 }
