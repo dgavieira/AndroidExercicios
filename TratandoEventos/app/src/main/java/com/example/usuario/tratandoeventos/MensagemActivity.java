@@ -15,11 +15,19 @@ public class MensagemActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mensagem);
         Intent intent = getIntent();
-        String nome = intent.getStringExtra("nome");
+        if(intent != null){
+            Bundle params = intent.getExtras();
+            if(params != null){
+                String nome = params.getString("nome");
+                String regiao = params.getString("regiao");
 
-        TextView tv = new TextView(this);
-        tv.setText("Dados inseridos com sucesso!");
-        setContentView(tv);
+                TextView nometv = (TextView) findViewById(R.id.txtVwNome);
+                TextView regiaotv = (TextView) findViewById(R.id.txtVwRegiao);
+
+                nometv.setText("Nome: "+nome);
+                regiaotv.setText("Regiao: "+regiao);
+            }
+        }
     }
 
     @Override

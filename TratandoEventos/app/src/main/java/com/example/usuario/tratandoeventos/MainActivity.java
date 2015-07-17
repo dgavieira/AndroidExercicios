@@ -8,28 +8,53 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity {
-
+    public static final int CONSTANTE_TELA_1 = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         Button btn = (Button) findViewById(R.id.btnCadastro);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mostrarMensagem();
+            enviarDados();
+            }
+        });
+        EditText edtRegiao = (EditText) findViewById(R.id.edtRegiao);
+        edtRegiao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                usarToast("Clique");
+            }
+        });
+        edtRegiao.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                usarToast("Long Clique");
+                return false;
             }
         });
     }
-    public void mostrarMensagem(){
-        Intent intent = new Intent(this,MensagemActivity.class);
-        final EditText edtNome = (EditText) findViewById(R.id.edtNome);
-        intent.putExtra("nome",edtNome.getText().toString());
-        startActivity(intent);
+    public void usarToast(String msg){
+        Toast.makeText(this, msg, 1000).show();
+    }
+
+    public void enviarDados(){
+        EditText nome = (EditText) findViewById(R.id.edtNome);
+        EditText regiao = (EditText) findViewById(R.id.edtRegiao);
+
+        Bundle params = new Bundle();
+        params.putString("nome", nome.getText().toString());
+        params.putString("regiao", regiao.getText().toString());
+
+        Intent intent = new Intent(this, MensagemActivity.class);
+        intent.putExtras(params);
+
+        startActivityForResult(intent, CONSTANTE_TELA_1);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
